@@ -1,0 +1,8 @@
+---
+title: "Slide Decks"
+---
+
+Welcome! Pick a deck:
+
+- [13.07.2026 - Thesis Meeting](130702026-meeting.qmd)
+

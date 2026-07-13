@@ -1,0 +1,22 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Radu Diaconescu - Thesis Slides"
+  navbar:
+    background: primary
+    # left:
+    #   - href: index.qmd
+    #     text: Home
+    #   - href: deck1.qmd
+    #     text: "Deck 1"
+    #   - href: deck2.qmd
+    #     text: "Deck 2"
+    #   - href: deck3.qmd
+    #     text: "Deck 3"
+
+format:
+  html:
+    theme: zephyr
+    css: styles.css

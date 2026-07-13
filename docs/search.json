@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "deck1.html#first-slide",
+    "href": "deck1.html#first-slide",
+    "title": "Deck 1 — Introduction",
+    "section": "First slide",
+    "text": "First slide\nSome content."
+  },
+  {
+    "objectID": "deck1.html#second-slide",
+    "href": "deck1.html#second-slide",
+    "title": "Deck 1 — Introduction",
+    "section": "Second slide",
+    "text": "Second slide\n\nPoint A\nPoint B"
+  },
+  {
+    "objectID": "deck1.html#a-slide-with-columns",
+    "href": "deck1.html#a-slide-with-columns",
+    "title": "Deck 1 — Introduction",
+    "section": "A slide with columns",
+    "text": "A slide with columns\n\n\nLeft side\n\nRight side"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Slide Decks",
+    "section": "",
+    "text": "Welcome! Pick a deck:\n\n13.07.2026 - Thesis Meeting"
+  },
+  {
+    "objectID": "130702026-meeting.html#first-slide",
+    "href": "130702026-meeting.html#first-slide",
+    "title": "Thesis Meeting 13.07.2026",
+    "section": "First slide",
+    "text": "First slide\nSome content."
+  },
+  {
+    "objectID": "130702026-meeting.html#second-slide",
+    "href": "130702026-meeting.html#second-slide",
+    "title": "Thesis Meeting 13.07.2026",
+    "section": "Second slide",
+    "text": "Second slide\n\nPoint A\nPoint B"
+  },
+  {
+    "objectID": "130702026-meeting.html#a-slide-with-columns",
+    "href": "130702026-meeting.html#a-slide-with-columns",
+    "title": "Thesis Meeting 13.07.2026",
+    "section": "A slide with columns",
+    "text": "A slide with columns\n\n\nLeft side\n\nRight side"
+  }
+]

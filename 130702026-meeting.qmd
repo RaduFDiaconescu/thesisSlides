@@ -1,0 +1,36 @@
+---
+title: "Thesis Meeting 13.07.2026"
+subtitle: "Radu Diaconescu"
+format:
+  revealjs:
+    theme: serif
+    slide-number: true
+    transition: fade
+    toc: true
+    toc-depth: 2
+    toc-title: Contents
+---
+
+# Chapter 1
+
+## First slide
+
+Some content.
+
+## Second slide
+
+- Point A
+- Point B
+
+# Chapter 2
+
+## A slide with columns
+
+::: {.columns}
+::: {.column width="50%"}
+Left side
+:::
+::: {.column width="50%"}
+Right side
+:::
+:::
