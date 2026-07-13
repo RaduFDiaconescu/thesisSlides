@@ -139,50 +139,110 @@
 <nav role="doc-toc"> 
 <h2 id="toc-title">Contents</h2>
 <ul>
-<li><a href="#/chapter-1" id="/toc-chapter-1">Chapter 1</a>
-<ul>
-<li><a href="#/first-slide" id="/toc-first-slide">First slide</a></li>
-<li><a href="#/second-slide" id="/toc-second-slide">Second slide</a></li>
-</ul></li>
-<li><a href="#/chapter-2" id="/toc-chapter-2">Chapter 2</a>
-<ul>
-<li><a href="#/a-slide-with-columns" id="/toc-a-slide-with-columns">A slide with columns</a></li>
-</ul></li>
+<li><a href="#/last-time" id="/toc-last-time">Last time</a></li>
+<li><a href="#/reminder---the-inference-procedure" id="/toc-reminder---the-inference-procedure">Reminder - The Inference Procedure</a></li>
+<li><a href="#/new-notation" id="/toc-new-notation">New notation</a></li>
+<li><a href="#/introducing-a-perturbation" id="/toc-introducing-a-perturbation">Introducing a perturbation</a></li>
+<li><a href="#/distance-perturbation" id="/toc-distance-perturbation">Distance Perturbation</a></li>
+<li><a href="#/logit-route-effective-distance" id="/toc-logit-route-effective-distance">Logit route effective distance</a></li>
+<li><a href="#/logit-route-effective-distance---ii" id="/toc-logit-route-effective-distance---ii">Logit route effective distance - II</a></li>
 </ul>
 </nav>
 </section>
-<section>
-<section id="chapter-1" class="title-slide slide level1 center">
-<h1>Chapter 1</h1>
+<section id="last-time" class="slide level2">
+<h2>Last time</h2>
+
+<img data-src="images/calibrated_infer_13072026.png" class="r-stretch"></section>
+<section id="reminder---the-inference-procedure" class="slide level2">
+<h2>Reminder - The Inference Procedure</h2>
+
+<img data-src="images/inference_proc_flowchart.png" class="r-stretch"></section>
+<section id="new-notation" class="slide level2 smaller">
+<h2>New notation</h2>
+<div class="left">
+<p><span class="math display">\[
+\mathcal{L}(T,\lambda,\alpha,\beta)
+= \sum_{ij}\Big[T_{ij}\ln\tfrac{T_{ij}}{T^0_{ij}} - T_{ij} + T^0_{ij}\Big] \\
++ \sum_a \lambda_a\Big(\sum_{ij}p^a_{ij}T_{ij} - V_a\Big)
++ \sum_i \alpha_i\Big(\sum_j T_{ij} - O_i\Big)
++ \sum_j \beta_j\Big(\sum_i T_{ij} - D_j\Big)
+\]</span></p>
+</div>
+<p><span class="math display">\[
+T_{ij}^* = T^0_{ij}\,\exp\!\Big(-\sum_a p^a_{ij}\,\lambda_a - \alpha_i - \beta_j\Big)
+\]</span></p>
+<p><span class="math display">\[
+\mathcal{D}(\lambda, \alpha, \beta)
+= \sum_{ij} (T_{ij}^0 -  T_{ij})
++ \sum_a \lambda_a V_a
++ \sum_i \alpha_i O_i
++ \sum_j \beta_j D_j
+\]</span></p>
+<p>Then denote</p>
+<p><span class="math display">\[
+\theta = (\lambda_1, \lambda_2, ... , \alpha_1, \alpha_2, ..., \beta_1, \beta_2, ...)
+\]</span></p>
+<p><span class="math display">\[
+m_{ij} = \big(p^1_{ij}, \dots, p^E_{ij},\; \underbrace{0,\dots,1,\dots,0}_{i},\; \underbrace{0,\dots,1,\dots,0}_{j}\big)
+\]</span></p>
+<p>So: <span class="math inline">\(\log T_{ij}^* = \log T_{ij}^0 - m_{ij}^T \theta\)</span></p>
+</section>
+<section id="introducing-a-perturbation" class="slide level2">
+<h2>Introducing a perturbation</h2>
+<p>Perturbing the flow on edge a: <span class="math display">\[
+V_a \rightarrow V_a + \delta V_a
+\]</span></p>
+<p>Then the corresponding disturbance in the trip matrix will be</p>
+<p><span class="math display">\[
+\delta \log T_{ij} = \delta \log \tilde T_{ij}^0 - \delta m_{ij}^T \cdot \theta -  m_{ij}^T \delta \theta
+\]</span></p>
+<p>subject to being at new optimum:</p>
+<p><span class="math display">\[
+\nabla D = 0
+\]</span></p>
+</section>
+<section id="distance-perturbation" class="slide level2">
+<h2>Distance Perturbation</h2>
+<p><span class="math display">\[
+\frac{\partial d_{a'}}{\partial V_{a'}} = - \frac{1-P_{a'}}{V_{a'}}
+\]</span> For edges e from same origin: <span class="math display">\[
+\frac{\partial d_{e}}{\partial V_{e}} = \frac{P_{a'}}{V_a'}
+\]</span></p>
+<p>What about distances over a path? <span class="math inline">\(\rightarrow\)</span> Discontinuity</p>
+</section>
+<section id="logit-route-effective-distance" class="slide level2 smaller">
+<h2>Logit route effective distance</h2>
+<p>We have the logit route choice probability as</p>
+<p><span class="math display">\[
+\pi_r = \frac{e^{-\eta c_r}}{Z_{ij}}, \qquad
+Z_{ij} = \sum_{s \in \mathcal{R}_{ij}} e^{-\eta c_s}, \qquad
+p^a_{ij} = \sum_{r \in \mathcal{R}_{ij}} \pi_r\,[\![a \in r]\!]
+\]</span></p>
+<p>Then define the logit route effective distance as</p>
+<p><span class="math display">\[
+d_{ij} = -\frac{1}{\eta}\ln \sum_{r \in \mathcal{R}_{ij}} e^{-\eta c_r}
+\]</span></p>
+<p>where for sufficiently large <span class="math inline">\(\eta\)</span>, <span class="math inline">\(d_{ij} \approx\)</span> SPT effective distance.</p>
+<p>Intuitively: this is the expected distance between the nodes for the average logit route choice traveller (?). So, slightly larger than most “efficient”.</p>
+<p>Then:</p>
+<p><span class="math display">\[
+\frac{\partial d_{ij}}{\partial d_b} = p_{ij}^b
+\]</span></p>
+</section>
+<section id="logit-route-effective-distance---ii" class="slide level2 smaller">
+<h2>Logit route effective distance - II</h2>
+<p>So</p>
+<p><span class="math display">\[
+\frac{\partial p_{ij}^{a}}{\partial d_b} = - \eta \operatorname{Cov}(1_a, 1_b)
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+\delta \log T_{ij} = \delta \log \tilde T_{ij}^0 - \delta m_{ij}^T \cdot \theta -  m_{ij}^T \delta \theta
+\]</span></p>
+<p>can be written in closed form.</p>
+
 
 </section>
-<section id="first-slide" class="slide level2">
-<h2>First slide</h2>
-<p>Some content.</p>
-</section>
-<section id="second-slide" class="slide level2">
-<h2>Second slide</h2>
-<ul>
-<li>Point A</li>
-<li>Point B</li>
-</ul>
-</section></section>
-<section>
-<section id="chapter-2" class="title-slide slide level1 center">
-<h1>Chapter 2</h1>
-
-</section>
-<section id="a-slide-with-columns" class="slide level2">
-<h2>A slide with columns</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Left side</p>
-</div><div class="column" style="width:50%;">
-<p>Right side</p>
-</div></div>
-
-
-</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

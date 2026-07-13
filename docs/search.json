@@ -7,24 +7,52 @@
     "text": "Welcome! Pick a deck:\n\n13.07.2026 - Thesis Meeting"
   },
   {
-    "objectID": "130702026-meeting.html#first-slide",
-    "href": "130702026-meeting.html#first-slide",
+    "objectID": "130702026-meeting.html#last-time",
+    "href": "130702026-meeting.html#last-time",
     "title": "Thesis Meeting 13.07.2026",
-    "section": "First slide",
-    "text": "First slide\nSome content."
+    "section": "Last time",
+    "text": "Last time"
   },
   {
-    "objectID": "130702026-meeting.html#second-slide",
-    "href": "130702026-meeting.html#second-slide",
+    "objectID": "130702026-meeting.html#reminder---the-inference-procedure",
+    "href": "130702026-meeting.html#reminder---the-inference-procedure",
     "title": "Thesis Meeting 13.07.2026",
-    "section": "Second slide",
-    "text": "Second slide\n\nPoint A\nPoint B"
+    "section": "Reminder - The Inference Procedure",
+    "text": "Reminder - The Inference Procedure"
   },
   {
-    "objectID": "130702026-meeting.html#a-slide-with-columns",
-    "href": "130702026-meeting.html#a-slide-with-columns",
+    "objectID": "130702026-meeting.html#new-notation",
+    "href": "130702026-meeting.html#new-notation",
     "title": "Thesis Meeting 13.07.2026",
-    "section": "A slide with columns",
-    "text": "A slide with columns\n\n\nLeft side\n\nRight side"
+    "section": "New notation",
+    "text": "New notation\n\n\\[\n\\mathcal{L}(T,\\lambda,\\alpha,\\beta)\n= \\sum_{ij}\\Big[T_{ij}\\ln\\tfrac{T_{ij}}{T^0_{ij}} - T_{ij} + T^0_{ij}\\Big] \\\\\n+ \\sum_a \\lambda_a\\Big(\\sum_{ij}p^a_{ij}T_{ij} - V_a\\Big)\n+ \\sum_i \\alpha_i\\Big(\\sum_j T_{ij} - O_i\\Big)\n+ \\sum_j \\beta_j\\Big(\\sum_i T_{ij} - D_j\\Big)\n\\]\n\n\\[\nT_{ij}^* = T^0_{ij}\\,\\exp\\!\\Big(-\\sum_a p^a_{ij}\\,\\lambda_a - \\alpha_i - \\beta_j\\Big)\n\\]\n\\[\n\\mathcal{D}(\\lambda, \\alpha, \\beta)\n= \\sum_{ij} (T_{ij}^0 -  T_{ij})\n+ \\sum_a \\lambda_a V_a\n+ \\sum_i \\alpha_i O_i\n+ \\sum_j \\beta_j D_j\n\\]\nThen denote\n\\[\n\\theta = (\\lambda_1, \\lambda_2, ... , \\alpha_1, \\alpha_2, ..., \\beta_1, \\beta_2, ...)\n\\]\n\\[\nm_{ij} = \\big(p^1_{ij}, \\dots, p^E_{ij},\\; \\underbrace{0,\\dots,1,\\dots,0}_{i},\\; \\underbrace{0,\\dots,1,\\dots,0}_{j}\\big)\n\\]\nSo: \\(\\log T_{ij}^* = \\log T_{ij}^0 - m_{ij}^T \\theta\\)"
+  },
+  {
+    "objectID": "130702026-meeting.html#introducing-a-perturbation",
+    "href": "130702026-meeting.html#introducing-a-perturbation",
+    "title": "Thesis Meeting 13.07.2026",
+    "section": "Introducing a perturbation",
+    "text": "Introducing a perturbation\nPerturbing the flow on edge a: \\[\nV_a \\rightarrow V_a + \\delta V_a\n\\]\nThen the corresponding disturbance in the trip matrix will be\n\\[\n\\delta \\log T_{ij} = \\delta \\log \\tilde T_{ij}^0 - \\delta m_{ij}^T \\cdot \\theta -  m_{ij}^T \\delta \\theta\n\\]\nsubject to being at new optimum:\n\\[\n\\nabla D = 0\n\\]"
+  },
+  {
+    "objectID": "130702026-meeting.html#distance-perturbation",
+    "href": "130702026-meeting.html#distance-perturbation",
+    "title": "Thesis Meeting 13.07.2026",
+    "section": "Distance Perturbation",
+    "text": "Distance Perturbation\n\\[\n\\frac{\\partial d_{a'}}{\\partial V_{a'}} = - \\frac{1-P_{a'}}{V_{a'}}\n\\] For edges e from same origin: \\[\n\\frac{\\partial d_{e}}{\\partial V_{e}} = \\frac{P_{a'}}{V_a'}\n\\]\nWhat about distances over a path? \\(\\rightarrow\\) Discontinuity"
+  },
+  {
+    "objectID": "130702026-meeting.html#logit-route-effective-distance",
+    "href": "130702026-meeting.html#logit-route-effective-distance",
+    "title": "Thesis Meeting 13.07.2026",
+    "section": "Logit route effective distance",
+    "text": "Logit route effective distance\nWe have the logit route choice probability as\n\\[\n\\pi_r = \\frac{e^{-\\eta c_r}}{Z_{ij}}, \\qquad\nZ_{ij} = \\sum_{s \\in \\mathcal{R}_{ij}} e^{-\\eta c_s}, \\qquad\np^a_{ij} = \\sum_{r \\in \\mathcal{R}_{ij}} \\pi_r\\,[\\![a \\in r]\\!]\n\\]\nThen define the logit route effective distance as\n\\[\nd_{ij} = -\\frac{1}{\\eta}\\ln \\sum_{r \\in \\mathcal{R}_{ij}} e^{-\\eta c_r}\n\\]\nwhere for sufficiently large \\(\\eta\\), \\(d_{ij} \\approx\\) SPT effective distance.\nIntuitively: this is the expected distance between the nodes for the average logit route choice traveller (?). So, slightly larger than most “efficient”.\nThen:\n\\[\n\\frac{\\partial d_{ij}}{\\partial d_b} = p_{ij}^b\n\\]"
+  },
+  {
+    "objectID": "130702026-meeting.html#logit-route-effective-distance---ii",
+    "href": "130702026-meeting.html#logit-route-effective-distance---ii",
+    "title": "Thesis Meeting 13.07.2026",
+    "section": "Logit route effective distance - II",
+    "text": "Logit route effective distance - II\nSo\n\\[\n\\frac{\\partial p_{ij}^{a}}{\\partial d_b} = - \\eta \\operatorname{Cov}(1_a, 1_b)\n\\]\nThen\n\\[\n\\delta \\log T_{ij} = \\delta \\log \\tilde T_{ij}^0 - \\delta m_{ij}^T \\cdot \\theta -  m_{ij}^T \\delta \\theta\n\\]\ncan be written in closed form."
   }
 ]
