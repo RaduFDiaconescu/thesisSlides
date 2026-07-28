@@ -4,6 +4,7 @@ title: "Slide Decks"
 
 Welcome! Pick a deck:
 
+- [27.07.2026 - Thesis Meeting](270702026-meeting.qmd)
 - [13.07.2026 - Thesis Meeting](130702026-meeting.qmd)
 - [Sensitivity Analysis - Excalidraw](images/sensitivityAnalysis.excalidraw.png)
 

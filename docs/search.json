@@ -4,7 +4,196 @@
     "href": "index.html",
     "title": "Slide Decks",
     "section": "",
-    "text": "Welcome! Pick a deck:\n\n13.07.2026 - Thesis Meeting\nSensitivity Analysis - Excalidraw"
+    "text": "Welcome! Pick a deck:\n\n27.07.2026 - Thesis Meeting\n13.07.2026 - Thesis Meeting\nSensitivity Analysis - Excalidraw"
+  },
+  {
+    "objectID": "270702026-meeting.html#last-time",
+    "href": "270702026-meeting.html#last-time",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Last time",
+    "text": "Last time\n\nintroduced a logit all-paths effective distance\nderived the first-order perturbation analysis of the OD matrix estimate with changes in edge flows\n\nsince then:\n\nupdated inference pipeline implementation\nprocessed additional datasets\nimplemented and tested perturbation analysis\nsome visualization work"
+  },
+  {
+    "objectID": "270702026-meeting.html#si-simulation",
+    "href": "270702026-meeting.html#si-simulation",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "SI simulation",
+    "text": "SI simulation\n\n\nYour browser does not support the video tag."
+  },
+  {
+    "objectID": "270702026-meeting.html#si-simulation---global-prevalence-trajectories",
+    "href": "270702026-meeting.html#si-simulation---global-prevalence-trajectories",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "SI simulation - global prevalence trajectories",
+    "text": "SI simulation - global prevalence trajectories"
+  },
+  {
+    "objectID": "270702026-meeting.html#si-simulation---arrival-times",
+    "href": "270702026-meeting.html#si-simulation---arrival-times",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "SI simulation - arrival times",
+    "text": "SI simulation - arrival times"
+  },
+  {
+    "objectID": "270702026-meeting.html#reminder-logit-effective-distance",
+    "href": "270702026-meeting.html#reminder-logit-effective-distance",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Reminder: logit effective distance",
+    "text": "Reminder: logit effective distance\nWe have the logit route choice probability as\n\\[\n\\pi_r = \\frac{e^{-\\eta c_r}}{Z_{ij}}, \\qquad\nZ_{ij} = \\sum_{s \\in \\mathcal{R}_{ij}} e^{-\\eta c_s}, \\qquad\np^a_{ij} = \\sum_{r \\in \\mathcal{R}_{ij}} \\pi_r\\,[\\![a \\in r]\\!]\n\\]\nThen define the logit route effective distance as\n\\[\nd_{ij} = -\\frac{1}{\\eta}\\ln \\sum_{r \\in \\mathcal{R}_{ij}} e^{-\\eta c_r}\n\\]\nwhere for sufficiently large \\(\\eta\\), \\(d_{ij} \\approx\\) SPT effective distance."
+  },
+  {
+    "objectID": "270702026-meeting.html#reminder---the-inference-procedure",
+    "href": "270702026-meeting.html#reminder---the-inference-procedure",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Reminder - The Inference Procedure",
+    "text": "Reminder - The Inference Procedure"
+  },
+  {
+    "objectID": "270702026-meeting.html#inference-pipeline-modifications",
+    "href": "270702026-meeting.html#inference-pipeline-modifications",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Inference Pipeline Modifications",
+    "text": "Inference Pipeline Modifications\n\nusing the logsum “all-paths” effective distance\nNewton post-optimization\nturning off marginal rescaling\nparameter re-calibration"
+  },
+  {
+    "objectID": "270702026-meeting.html#previously-inference-using-spt-effective-distance",
+    "href": "270702026-meeting.html#previously-inference-using-spt-effective-distance",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Previously: inference using SPT effective distance",
+    "text": "Previously: inference using SPT effective distance"
+  },
+  {
+    "objectID": "270702026-meeting.html#inference-using-logit-paths-effective-distance-2019",
+    "href": "270702026-meeting.html#inference-using-logit-paths-effective-distance-2019",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Inference using logit paths effective distance (2019)",
+    "text": "Inference using logit paths effective distance (2019)"
+  },
+  {
+    "objectID": "270702026-meeting.html#inference-using-logit-paths-effective-distance-2022",
+    "href": "270702026-meeting.html#inference-using-logit-paths-effective-distance-2022",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Inference using logit paths effective distance (2022)",
+    "text": "Inference using logit paths effective distance (2022)"
+  },
+  {
+    "objectID": "270702026-meeting.html#us-air-travel-network-2025-state-level",
+    "href": "270702026-meeting.html#us-air-travel-network-2025-state-level",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "US air travel network, 2025: State-level",
+    "text": "US air travel network, 2025: State-level"
+  },
+  {
+    "objectID": "270702026-meeting.html#us-air-travel-network-2025-airport-level",
+    "href": "270702026-meeting.html#us-air-travel-network-2025-airport-level",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "US air travel network, 2025: Airport-level",
+    "text": "US air travel network, 2025: Airport-level"
+  },
+  {
+    "objectID": "270702026-meeting.html#parameter-sensitivity-analysis",
+    "href": "270702026-meeting.html#parameter-sensitivity-analysis",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Parameter Sensitivity Analysis",
+    "text": "Parameter Sensitivity Analysis"
+  },
+  {
+    "objectID": "270702026-meeting.html#note-the-prior-constraints-seesaw",
+    "href": "270702026-meeting.html#note-the-prior-constraints-seesaw",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Note: The Prior-Constraints Seesaw",
+    "text": "Note: The Prior-Constraints Seesaw\n\nthe new formulation of OD pair effective distance conveys information about alternative paths to the gravity model\ndifferent regularization settings reveal this:\n\nif regularization parameter \\(\\sigma\\) goes up (less trust in edge flow data), then\nlogit routing dispersion parameter \\(\\eta\\) goes down (allow more alternate paths)\ngravity penalty parameter \\(\\beta\\) goes up (more trust in logit effective distance)\ninference quality stays very similar after calibration, even though constraints are used less in optimization"
+  },
+  {
+    "objectID": "270702026-meeting.html#reminder-intervention-analysis",
+    "href": "270702026-meeting.html#reminder-intervention-analysis",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Reminder: intervention analysis",
+    "text": "Reminder: intervention analysis\nIf I act to change the flow of edge a’, how does this impact \\(T_{ij}\\)?\n\\[\n\\theta = (\\lambda_1, \\lambda_2, ... , \\alpha_1, \\alpha_2, ..., \\beta_1, \\beta_2, ...)\n\\]\n\\[\nm_{ij} = \\big(p^1_{ij}, \\dots, p^E_{ij},\\; \\underbrace{0,\\dots,1,\\dots,0}_{i},\\; \\underbrace{0,\\dots,1,\\dots,0}_{j}\\big)\n\\]\nSo: \\(\\log T_{ij}^* = \\log T_{ij}^0 - m_{ij}^T \\theta\\). If \\(V_a \\rightarrow V_a + \\delta V_a\\), then the corresponding perturbation to the estimated trip matrix is\n\\[\n\\delta \\log T_{ij} = \\delta \\log \\tilde T_{ij}^0 - \\delta m_{ij}^T \\cdot \\theta -  m_{ij}^T \\delta \\theta\n\\]"
+  },
+  {
+    "objectID": "270702026-meeting.html#perturbation-analysis-solution-in-full",
+    "href": "270702026-meeting.html#perturbation-analysis-solution-in-full",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Perturbation Analysis Solution, In Full",
+    "text": "Perturbation Analysis Solution, In Full"
+  },
+  {
+    "objectID": "270702026-meeting.html#perturbation-analysis-three-terms",
+    "href": "270702026-meeting.html#perturbation-analysis-three-terms",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Perturbation Analysis, Three Terms",
+    "text": "Perturbation Analysis, Three Terms\n\\[\n\\delta \\log T_{ij} = \\delta \\log \\tilde T_{ij}^0 - \\delta m_{ij}^T \\cdot \\theta -  m_{ij}^T \\delta \\theta\n\\]\n\nI: perturation of (balanced) gravity prior\nII: routing perturbation\nIII: perturbation in optimizer response"
+  },
+  {
+    "objectID": "270702026-meeting.html#scenario-i---target-od-pair-inspect-edges",
+    "href": "270702026-meeting.html#scenario-i---target-od-pair-inspect-edges",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Scenario I - target OD pair, inspect edges",
+    "text": "Scenario I - target OD pair, inspect edges\nSuppose there is an outbreak in South Korea, and you are interested in knowing which edges are most impactful to perturb in order to limit the number of travellers coming from SK to Germany.\nMake a list of candidate edges, then run the perturbation analysis:\n\nmajor origin out-edges (incl. with major hubs)\nmajor destination in-edges\nmajor transfer legs (e.g. (“Turkey”, “Germany”) )\na few control edges"
+  },
+  {
+    "objectID": "270702026-meeting.html#scenario-i-results",
+    "href": "270702026-meeting.html#scenario-i-results",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Scenario I Results",
+    "text": "Scenario I Results"
+  },
+  {
+    "objectID": "270702026-meeting.html#scenario-i---only-edges-directly-connected-to-germany",
+    "href": "270702026-meeting.html#scenario-i---only-edges-directly-connected-to-germany",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Scenario I - only edges directly connected to Germany",
+    "text": "Scenario I - only edges directly connected to Germany"
+  },
+  {
+    "objectID": "270702026-meeting.html#does-the-prediction-hold-for-large-perturbations",
+    "href": "270702026-meeting.html#does-the-prediction-hold-for-large-perturbations",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Does the prediction hold for large perturbations?",
+    "text": "Does the prediction hold for large perturbations?\nIf the flow on candidate edge is decreased by 50%, does the linear prediction of the perturbation to OD trips from SK to Germany agree with results of full re-inference?\nI consider the 50% perturbation to top-20 largest in-edges of Germany, and the corresponding effect on OD trips from SK to Germany according to the two prediction approaches."
+  },
+  {
+    "objectID": "270702026-meeting.html#large-perturbation---results",
+    "href": "270702026-meeting.html#large-perturbation---results",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Large perturbation - results",
+    "text": "Large perturbation - results"
+  },
+  {
+    "objectID": "270702026-meeting.html#scenario-ii---target-edge-inspect-od-matrix",
+    "href": "270702026-meeting.html#scenario-ii---target-edge-inspect-od-matrix",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Scenario II - target edge, inspect OD matrix",
+    "text": "Scenario II - target edge, inspect OD matrix\nSuppose the edge USA -&gt; Brazil is perturbed. Which OD pairs are most affected, and how?"
+  },
+  {
+    "objectID": "270702026-meeting.html#scenario-ii---results",
+    "href": "270702026-meeting.html#scenario-ii---results",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Scenario II - results",
+    "text": "Scenario II - results"
+  },
+  {
+    "objectID": "270702026-meeting.html#scenario-ii---large-perturbations",
+    "href": "270702026-meeting.html#scenario-ii---large-perturbations",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Scenario II - large perturbations",
+    "text": "Scenario II - large perturbations"
+  },
+  {
+    "objectID": "270702026-meeting.html#one-last-idea-how-does-uncertainty-propagate",
+    "href": "270702026-meeting.html#one-last-idea-how-does-uncertainty-propagate",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "One last idea: how does uncertainty propagate?",
+    "text": "One last idea: how does uncertainty propagate?\nThe perturbation analysis gives us the perturbation of the transport matrix \\(\\frac{dT}{dV}\\), as well as the perturbation of the OD effective distance \\(\\frac{\\partial d_{ij}}{\\partial d_b} = p_{ij}^b\\) .\nFrom this, it is possible to model\n\nthe variance in est. of T, based on characteristics of noise on edge measurements\nthe uncertainty in arrival time, based on characteristics of noise on edge measurements, since \\[ t_{arrival}(i, j) \\propto d_{ij}^{eff} \\]"
+  },
+  {
+    "objectID": "270702026-meeting.html#now",
+    "href": "270702026-meeting.html#now",
+    "title": "Thesis Meeting 27.07.2026",
+    "section": "Now:",
+    "text": "Now:\n\nwhat is missing?\nwhat should be highlighted?"
   },
   {
     "objectID": "130702026-meeting.html#last-time",
