@@ -1,0 +1,262 @@
+---
+title: "Origin, Destination, Contagion"
+subtitle: "Inferring Air Travel Patterns using Maximum Entropy"
+author: "Radu Diaconescu"
+date: 29 July 2026
+format:
+  revealjs:
+    theme: serif
+    date-format: "DD.MM.YYYY"
+    slide-number: true
+    transition: fade
+    toc: true
+    toc-depth: 2
+    toc-title: Contents
+    include-in-header: 
+      - text: |
+          <style>
+          .reveal h1 { font-size: 1.5em; }
+          .reveal h2 { font-size: 1.4em; }
+          .date { font-size: 0.7em; }
+          </style>
+---
+
+## Motivation
+
+Origin-destination travel patterns are important for disease propagation.
+
+OD data is rare. Usually, we have access to data about flows of passengers on edges.
+
+::::: {style="position: relative;"}
+::: {.fragment .fade-out style="display: flex; justify-content: center; align-items: center; position: absolute; left: 50%; transform: translateX(-50%); "}
+<iframe width="640" height="280" src="videos/si_comparison.mp4" controls>
+
+</iframe>
+:::
+
+::: {.fragment style="display: flex; justify-content: center; align-items: center; "}
+![](images/si_simulation_arrival.png){style="max-height: 350px;"}
+:::
+:::::
+
+## Project Goals
+
+Given the world air transportation network, with\
+**countries** as **nodes** and\
+existing passenger **flight** **links** as **edges**:
+
+- How well is it possible to infer the Origin-Destination matrix of a transport network given only edge flows?
+
+- How do OD travel patterns react to a perturbation of flows on an edge? (e.g.: if I cut half of the flights from A to B, which Origin-Destination pairs are affected, and how?)
+
+## OD matrix inference: How? {.scrollable .smaller}
+
+- Effective distance: 
+
+$d_{ij} = 1 - \ln {P_{ij}}$ , where $P_{ij}$ is the fraction of node i's total outflow that goes to j. **Higher passenger fraction = nodes are closer.**
+
+- Logit route choice model:
+  $$\pi_r = \frac{e^{-\eta c_r}}{Z_{ij}},
+  Z_{ij} = \sum_{s \in \mathcal{R}_{ij}} e^{-\eta c_s}, \qquad
+  p^a_{ij} = \sum_{r \in \mathcal{R}_{ij}} \pi_r\,[\![a \in r]\!]$$
+  with $\eta$ the fitted dispersion parameter. **Probability to take a path decays exponentially with how much longer it is than the shortest path.**
+- Logit all-path effective distance: $d^A_{ij} = -\frac{1}{\eta}\ln \sum_{r \in \mathcal{R}_{ij}} e^{-\eta c_r}$
+- Gravity model: $T^0_{ij} \propto \frac{M_i M_j}{\exp {(\beta d_{ij})}}$
+- **Inference procedure:** find the OD matrix $T_{ij}$ that is simultaneously closest to the gravity model estimate and closest to fulfilling observed passenger flows on edges according to a route choice model: $\min (\sum _{ij} p_{ij}^a T_{ij} - V_a)$ for all a.
+- Mathematically, the quantity to minimize is 
+
+$$
+\mathcal{L}(T,\lambda,\alpha,\beta)
+= \underbrace{\sum_{ij}\Big[T_{ij}\ln\tfrac{T_{ij}}{T^0_{ij}} - T_{ij} + T^0_{ij}\Big]}_{\text{Entropy}} \\
++ \underbrace{\sum_a \lambda_a\Big(\sum_{ij}p^a_{ij}T_{ij} - V_a\Big)}_{\text{Edge flows}} \\
++ \underbrace{\sum_i \alpha_i\Big(\sum_j T_{ij} - O_i\Big)}_{\text{Total outflows}} \\
++ \underbrace{\sum_j \beta_j\Big(\sum_i T_{ij} - D_j\Big)}_{\text{Total inflows}} \\
+$$
+
+## Perturbation Analysis: How? {.scrollable}
+
+- Idea: If the described inference procedure is a good data-informed estimator of the OD matrix, then perhaps the estimator's behaviour at perturbation is a good estimator of perturbation effects in the real network.
+- Concretely: if the flow V on edge a' changes ($V_{a'} \rightarrow V_{a'} + \delta V_{a'}$), how does the estimated OD matrix change ($T_{ij} \rightarrow T_{ij} + \delta T_{ij}$)
+- The perturbation can be calculated in closed form:
+$$
+\delta \log T_{ij} = \underbrace{\delta \log \tilde T_{ij}^0}_{\text{Gravity prior perturbation}} \\ - \underbrace{\delta m_{ij}^T \cdot \theta}_{\text{Routing perturbation}} \\  - \underbrace{m_{ij}^T \delta \theta}_{\text{Optimizer multipliers perturbation}}
+$$
+
+## Results: OD matrix inference {.scrollable}
+
+
+:::: {.columns}
+
+  
+
+::: {.column width="70%"}
+
+![](images/2019_inference.png){style="max-height: 550px;"}
+
+:::
+
+  
+
+::: {.column width="30%"}
+
+2019, country-level
+
+  
+
+Pearson: 0.98
+
+  
+
+Spearman: 0.92
+
+  
+
+SRMSE: 1.06
+
+  
+
+wMAPE: 21.5%
+
+  
+
+logRMSE: 2.75
+
+  
+
+CPC: 0.89
+
+  
+
+KL Div: 0.06
+
+:::
+
+::::
+
+:::: {.columns}
+
+::: {.column width="70%"}
+
+![](images/2022_inference.png){style="max-height: 550px;"}
+
+:::
+
+  
+
+::: {.column width="30%"}
+
+2022, country-level
+
+  
+
+Pearson: 0.98
+
+  
+
+Spearman: 0.92
+
+  
+
+SRMSE: 1.27
+
+  
+
+wMAPE: 22.2%
+
+  
+
+logRMSE: 2.86
+
+  
+
+CPC: 0.89
+
+  
+
+KL Div: 0.06
+
+:::
+
+::::
+
+:::: {.columns}
+
+::: {.column width="70%"}
+
+![](images/US_states_inference_2025.png){style="max-height: 550px;"}
+
+:::
+
+::: {.column width="30%"}
+
+2025, US states
+
+  
+
+Pearson: 0.96
+
+  
+
+Spearman: 0.95
+
+  
+
+SRMSE: 0.72
+
+  
+
+wMAPE: 25.4%
+
+  
+
+logRMSE: 1.5
+
+  
+
+CPC: 0.87
+
+  
+
+KL Div: 0.07
+
+:::
+
+::::
+
+---
+
+## Results of Perturbation Analysis (Scenario I) {.scrollable}
+Suppose there is an outbreak in South Korea, and we want to diminish the number of travellers from there to Germany. Which edges should be the focus?
+
+- Candidate edges from around the world:
+
+::: {style="max-height: 2000px; overflow-y: auto;"}
+![](images/scenario1Perturbationresults.png){width="100%"}
+:::
+
+- Candidate edges ending in Germany:
+
+::: {style="max-height: 2000px; overflow-y: auto;"}
+![](images/scenario1Perturbationresults-Germanedges.png){width="100%"}
+:::
+
+- Does the prediction hold for a large perturbation?
+
+![](images/largePerturbationScenarioI.png)
+
+## Results of Perturbation Analysis (Scenario II) {.scrollable}
+
+Suppose that flights between the US and Brazil suffer a perturbation. What is the global effect on OD travel patterns?
+
+![](images/scenarioIItable.png)
+
+Does the prediction hold for a large perturbation?
+
+![](images/scenarioIILargeperturb.png)
+
+## Conclusion
+
+- It is possible to produce good estimates of origin-destination travel patterns informed by edge flow data using this constrained optimization approach.
+
+- Linear perturbation analysis characterizes well the response of the estimated OD matrix, even to large perturbations in flows on an edge.
+

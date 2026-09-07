@@ -1,0 +1,21 @@
+/* Title slide: smaller title text, pulled up closer to the top */
+#title-slide {
+  padding-top: 2%;
+}
+
+#title-slide h1.title {
+  font-size: 1.1em !important;
+}
+
+#title-slide p.subtitle,
+#title-slide p.author,
+#title-slide p.date {
+  font-size: 0.6em !important;
+}
+
+/* Video still confined to the lower portion of the slide */
+.reveal .backgrounds .slide-background:has(video) {
+  height: 70% !important;
+  top: auto !important;
+  bottom: 0 !important;
+}
