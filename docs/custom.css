@@ -19,3 +19,11 @@
   top: auto !important;
   bottom: 0 !important;
 }
+
+#TOC {
+  font-size: 0.7em;
+}
+
+.small-col {
+  font-size: 0.7em;
+}

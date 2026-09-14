@@ -149,23 +149,212 @@ Radu Diaconescu
   <p class="date">28.09.2026</p>
 </section><section id="TOC">
 <nav role="doc-toc"> 
-<h2 id="toc-title">Contents</h2>
+<h2 id="toc-title">Table of Contents</h2>
+<ul>
+<li><a href="#/context" id="/toc-context">Context</a>
 <ul>
 <li><a href="#/motivation" id="/toc-motivation">Motivation</a></li>
-<li><a href="#/test-slide-with-animation" id="/toc-test-slide-with-animation">Test slide with animation</a></li>
+<li><a href="#/goals" id="/toc-goals">Goals</a></li>
+</ul></li>
+<li><a href="#/goal-i-inferring-the-od-matrix" id="/toc-goal-i-inferring-the-od-matrix">Goal I: Inferring the OD matrix</a>
+<ul>
+<li><a href="#/route-choice" id="/toc-route-choice">Route Choice</a></li>
+<li><a href="#/network-distance" id="/toc-network-distance">Network Distance</a></li>
+<li><a href="#/gravity-model" id="/toc-gravity-model">Gravity Model</a></li>
+<li><a href="#/maximum-entropy" id="/toc-maximum-entropy">Maximum Entropy</a></li>
+<li><a href="#/inference-results" id="/toc-inference-results">Inference Results</a></li>
+</ul></li>
+<li><a href="#/goal-ii-perturbation-analysis" id="/toc-goal-ii-perturbation-analysis">Goal II: Perturbation Analysis</a>
+<ul>
+<li><a href="#/two-perturbation-questions" id="/toc-two-perturbation-questions">Two perturbation questions</a></li>
+<li><a href="#/linear-perturbation-analysis" id="/toc-linear-perturbation-analysis">Linear perturbation analysis</a></li>
+<li><a href="#/scenario-i-results" id="/toc-scenario-i-results">Scenario I Results</a></li>
+<li><a href="#/scenario-ii-results" id="/toc-scenario-ii-results">Scenario II Results</a></li>
+</ul></li>
+<li><a href="#/conclusion" id="/toc-conclusion">Conclusion</a></li>
 </ul>
 </nav>
 </section>
-<section id="motivation" class="slide level2">
-<h2>Motivation</h2>
-<p>Origin-destination travel patterns are important for disease propagation.</p>
-<p>OD data is rare. Usually, we have access to data about flows of passengers on edges.</p>
+<section>
+<section id="context" class="title-slide slide level1">
+<h1>Context</h1>
+
 </section>
-<section id="test-slide-with-animation" class="slide level2">
-<h2>Test slide with animation</h2>
-<video autoplay="" loop="" muted="" playsinline="" width="700">
-  <source src="videos/network_animation.webm" type="video/webm">
-</video>
+<section id="motivation" class="slide level2 scrollable">
+<h2>Motivation</h2>
+<ul>
+<li><p>The fastest avenue to spread infectious diseases around the world is through the world aviation network.</p></li>
+<li><p>To understand disease propagation from A to B, the important piece of information is: how many trips occur between origin A and destination B, regardless of paths taken? -&gt; <strong>Origin-Destination Matrix</strong>.</p></li>
+<li><p>Problem: data typically contains direct passenger flows, not overall OD trips.</p></li>
+</ul>
+<div style="display: flex; justify-content: center;">
+<p><video autoplay="" loop="" muted="" playsinline="" width="70%"> <source src="videos/network_animation.webm" type="video/webm"> </video></p>
+</div>
+</section>
+<section id="goals" class="slide level2">
+<h2>Goals</h2>
+<ul>
+<li><p><strong>Starting point</strong>: known transport network topology (e.g.&nbsp;nodes = countries, links = direct flight connections), known fluxes on all links.</p></li>
+<li><p>Goal I: based on flux data, infer the most likely origin-destination matrix for the network.</p></li>
+<li><p>Goal II: understand how the perturbation of an edge’s flux affects global OD patterns.</p></li>
+</ul>
+</section></section>
+<section>
+<section id="goal-i-inferring-the-od-matrix" class="title-slide slide level1">
+<h1>Goal I: Inferring the OD matrix</h1>
+
+</section>
+<section id="route-choice" class="slide level2">
+<h2>Route Choice</h2>
+<p>Logit route choice model:</p>
+<p><span class="math display">\[ \pi_r = \frac{e^{- \eta c_r}}{\sum_{s \in \mathcal{R}_{ij}} e^{- \eta c_s}} \]</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/logit_graph_demo.svg" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/logit_route_probs.svg" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="network-distance" class="slide level2">
+<h2>Network Distance</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Effective distance: <span class="math display">\[d_{i j}^{\operatorname{eff}} = d_0 - \ln (P_{i \rightarrow j})\]</span></p>
+<!-- [[**(Higher passenger flux -\> lower eff. distance)**]{.underline}]{style="font-size: 0.62em;"} -->
+<p>All-path effective distance: <span class="math display">\[d_{i j}^{A} = - \frac{1}{\eta} \ln \left( \sum_{r \in \mathcal{R}_{i j}} e^{- \eta d_r^{\operatorname{eff}}} \right) \]</span></p>
+</div><div class="column" style="width:50%;">
+<p><br>
+</p>
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><img data-src="images/effDist_diagram.svg" class="quarto-figure quarto-figure-right" height="470"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="gravity-model" class="slide level2">
+<h2>Gravity Model</h2>
+<p>The number of trips from O to D is:</p>
+<ul>
+<li>proportional to the populations of O and D</li>
+<li>penalized by a deterrence function of distance</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math display">\[T^0_{O D} \propto \frac{N_O N_D}{f(d_{O D})}\]</span></p>
+</div><div class="column" style="width:50%;">
+<p>[figures here]</p>
+</div></div>
+</section>
+<section id="maximum-entropy" class="slide level2">
+<h2>Maximum Entropy</h2>
+<p><strong>Core idea</strong>: best estimate makes no assumptions save for known data ⟺ maximizes informational entropy under constraints.</p>
+<p>Inference problem becomes a constrained <strong>optimization</strong> problem:</p>
+<p>find OD matrix <span class="math inline">\(T\)</span> where <span class="math inline">\(\left( - \sum_{i j} T_{i j} \ln \left( \frac{T_{i j}}{T^0_{i j}}\right) - T_{i j} + T^0_{i j} \right)\)</span> is maximized under constraint that <span class="math inline">\(F_a - \sum_{i j}p_{i j}^a T_{i j} = 0\)</span>.</p>
+<p><span style="font-size: 0.7em;"><span class="math inline">\(T\)</span> is the OD matrix, <span class="math inline">\(T^0\)</span> the gravity prior. <span class="math inline">\(F_a\)</span> = flow on edge a. <span class="math inline">\(p_{i j}^a\)</span> is the proportion of trips from origin i to destination j that use edge a.</span></p>
+</section>
+<section id="inference-results" class="slide level2 scrollable">
+<h2>Inference Results</h2>
+<div class="columns">
+<div class="column" style="width:65%;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="images/inference_scatterplots_cropped.png" class="quarto-figure quarto-figure-left" height="600"></p>
+</figure>
+</div>
+</div><div class="column small-col" style="width:35%;">
+<ul>
+<li>strong performance on measures of correlation<br>
+<strong>(r = 0.96-0.99,</strong> <span class="math inline">\(\rho\)</span> <strong>= 0.92-0.97)</strong> and of correct distribution of ODtrips <strong>(cpc = 0.87-0.94, KL Div = 0.06)</strong></li>
+<li>some prediction error persists, scaling inversely with OD pair size <strong>(wMAPE = 11-25%, SRMSE = 0.26-1.27)</strong></li>
+</ul>
+</div></div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/rankAndODconcentr.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</section></section>
+<section>
+<section id="goal-ii-perturbation-analysis" class="title-slide slide level1">
+<h1>Goal II: Perturbation Analysis</h1>
+
+</section>
+<section id="two-perturbation-questions" class="slide level2">
+<h2>Two perturbation questions</h2>
+<ol type="1">
+<li><p>Given an outbreak at node A, how does a policymaker effectively prevent (infected) passengers from travelling to node B? <span class="math inline">\(\rightarrow\)</span> Which edges are most influential for a given OD pair?</p></li>
+<li><p>If an edge in the transportation network is perturbed, which OD pairs are most affected?</p></li>
+</ol>
+<p>Idea: if the MaxEnt solution represents the best estimate of the OD matrix, then analyzing how the estimate shifts with passenger flow perturbations may provide the best clue for how the OD matrix shifts.</p>
+</section>
+<section id="linear-perturbation-analysis" class="slide level2">
+<h2>Linear perturbation analysis</h2>
+<p>Given a perturbation <span class="math inline">\(\delta V_a\)</span> of the flow <span class="math inline">\(V_a\)</span> on edge <span class="math inline">\(a\)</span>, it can be shown that</p>
+<div style="text-align: center;">
+<p><span class="math display">\[
+\small
+\boxed{
+\delta \ln T_{ij} = \underbrace{\delta \ln \tilde{T}^0_{ij}}_{\scriptsize\text{I. prior perturbation}} - \underbrace{\delta m_{ij}^T \theta}_{\scriptsize\text{II. routing perturbation}} - \underbrace{m_{ij}^T \delta\theta}_{\scriptsize\text{III. multiplier perturbation}}
+}
+\]</span></p>
+</div>
+<p>Note: reinterpreting <span class="math inline">\(\delta V_a = \epsilon _a\)</span> as passenger flow measurement error (vector of errors <span class="math inline">\(\epsilon\)</span>), and <span class="math inline">\(j_{i j} = \nabla T_{i j}\)</span>, this same approach gives the variance of the estimated OD matrix as <span class="math inline">\(\operatorname{Var}(T_{i j}) = j_{i j}^T \operatorname{Cov}(\epsilon)j_{i j}\)</span>.</p>
+</section>
+<section id="scenario-i-results" class="slide level2 scrollable">
+<h2>Scenario I Results</h2>
+<p>If there is an outbreak in South Korea, which edges should decrease their flows to prevent passengers from travelling to Germany?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/korea_arrows.png" class="quarto-figure quarto-figure-center" style="height:100.0%"></p>
+</figure>
+</div>
+<p>Does linear prediction agree with full re-inference for a large perturbation (50%)?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/koreaFullReinferRanks.png" class="quarto-figure quarto-figure-center" style="height:100.0%"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/koreaFullReinferScatter.png" class="quarto-figure quarto-figure-center" style="height:100.0%"></p>
+</figure>
+</div>
+</section>
+<section id="scenario-ii-results" class="slide level2 scrollable">
+<h2>Scenario II Results</h2>
+<p>If the edge USA <span class="math inline">\(\rightarrow\)</span> Brazil is perturbed, which OD pairs are most affected?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/brazilArrows.png" class="quarto-figure quarto-figure-center" style="height:100.0%"></p>
+</figure>
+</div>
+<p>Does linear prediction agree with full re-inference for a large perturbation (50%)?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/brazilLargePert.png" class="quarto-figure quarto-figure-center" style="height:100.0%"></p>
+</figure>
+</div>
+</section></section>
+<section id="conclusion" class="title-slide slide level1 scrollable">
+<h1>Conclusion</h1>
+<ul>
+<li>The technique of maximum entropy with constraints can estimate origin-destination travel patterns from edge flows efficiently.</li>
+<li>A linear perturbation analysis can indicate which edges are most influential for origin-destination pairs of interest.</li>
+<li>These tools can be useful in epidemiology, as well as having broader applicability in transport networks.</li>
+</ul>
+<p>Full details and bibliography:</p>
+<div style="text-align: center;">
+<p><img src="images/thesisCover.png" style="height: 600px;"></p>
+</div>
 
 
 </section>

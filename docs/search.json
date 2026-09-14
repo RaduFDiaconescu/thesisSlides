@@ -312,7 +312,7 @@
     "href": "Thesis_Defense_28092026.html#motivation",
     "title": "Maximum Entropy Estimation and Disease Propagation in the Worldwide Air Transportation Network",
     "section": "Motivation",
-    "text": "Motivation\nOrigin-destination travel patterns are important for disease propagation.\nOD data is rare. Usually, we have access to data about flows of passengers on edges."
+    "text": "Motivation\n\nThe fastest avenue to spread infectious diseases around the world is through the world aviation network.\nTo understand disease propagation from A to B, the important piece of information is: how many trips occur between origin A and destination B, regardless of paths taken? -&gt; Origin-Destination Matrix.\nProblem: data typically contains direct passenger flows, not overall OD trips."
   },
   {
     "objectID": "Thesis_Defense_28092026.html#project-goals",
@@ -369,5 +369,96 @@
     "title": "Maximum Entropy Estimation and Disease Propagation in the Worldwide Air Transportation Network",
     "section": "Test slide with animation",
     "text": "Test slide with animation"
+  },
+  {
+    "objectID": "Thesis_Defense_28092026.html#goals",
+    "href": "Thesis_Defense_28092026.html#goals",
+    "title": "Maximum Entropy Estimation and Disease Propagation in the Worldwide Air Transportation Network",
+    "section": "Goals",
+    "text": "Goals\n\nStarting point: known transport network topology (e.g. nodes = countries, links = direct flight connections), known fluxes on all links.\nGoal I: based on flux data, infer the most likely origin-destination matrix for the network.\nGoal II: understand how the perturbation of an edge’s flux affects global OD patterns."
+  },
+  {
+    "objectID": "Thesis_Defense_28092026.html#route-choice",
+    "href": "Thesis_Defense_28092026.html#route-choice",
+    "title": "Maximum Entropy Estimation and Disease Propagation in the Worldwide Air Transportation Network",
+    "section": "Route Choice",
+    "text": "Route Choice\nLogit route choice model:\n\\[ \\pi_r = \\frac{e^{- \\eta c_r}}{\\sum_{s \\in \\mathcal{R}_{ij}} e^{- \\eta c_s}} \\]"
+  },
+  {
+    "objectID": "Thesis_Defense_28092026.html#netw",
+    "href": "Thesis_Defense_28092026.html#netw",
+    "title": "Maximum Entropy Estimation and Disease Propagation in the Worldwide Air Transportation Network",
+    "section": "Netw",
+    "text": "Netw"
+  },
+  {
+    "objectID": "Thesis_Defense_28092026.html#network-distance",
+    "href": "Thesis_Defense_28092026.html#network-distance",
+    "title": "Maximum Entropy Estimation and Disease Propagation in the Worldwide Air Transportation Network",
+    "section": "Network Distance",
+    "text": "Network Distance\n\n\nEffective distance: \\[d_{i j}^{\\operatorname{eff}} = d_0 - \\ln (P_{i \\rightarrow j})\\]\n\nAll-path effective distance: \\[d_{i j}^{A} = - \\frac{1}{\\eta} \\ln \\left( \\sum_{r \\in \\mathcal{R}_{i j}} e^{- \\eta d_r^{\\operatorname{eff}}} \\right) \\]"
+  },
+  {
+    "objectID": "Thesis_Defense_28092026.html#the-gravity-model",
+    "href": "Thesis_Defense_28092026.html#the-gravity-model",
+    "title": "Maximum Entropy Estimation and Disease Propagation in the Worldwide Air Transportation Network",
+    "section": "The Gravity Model",
+    "text": "The Gravity Model"
+  },
+  {
+    "objectID": "Thesis_Defense_28092026.html#maximum-entropy",
+    "href": "Thesis_Defense_28092026.html#maximum-entropy",
+    "title": "Maximum Entropy Estimation and Disease Propagation in the Worldwide Air Transportation Network",
+    "section": "Maximum Entropy",
+    "text": "Maximum Entropy\nCore idea: best estimate makes no assumptions save for known data ⟺ maximizes informational entropy under constraints.\nInference problem becomes a constrained optimization problem:\nfind OD matrix \\(T\\) where \\(\\left( - \\sum_{i j} T_{i j} \\ln \\left( \\frac{T_{i j}}{T^0_{i j}}\\right) - T_{i j} + T^0_{i j} \\right)\\) is maximized under constraint that \\(F_a - \\sum_{i j}p_{i j}^a T_{i j} = 0\\).\n\\(T\\) is the OD matrix, \\(T^0\\) the gravity prior. \\(F_a\\) = flow on edge a. \\(p_{i j}^a\\) is the proportion of trips from origin i to destination j that use edge a."
+  },
+  {
+    "objectID": "Thesis_Defense_28092026.html#inference-results",
+    "href": "Thesis_Defense_28092026.html#inference-results",
+    "title": "Maximum Entropy Estimation and Disease Propagation in the Worldwide Air Transportation Network",
+    "section": "Inference Results",
+    "text": "Inference Results\n\n\n\n\n\n\n\n\n\nstrong performance on measures of correlation\n(r = 0.96-0.99, \\(\\rho\\) = 0.92-0.97) and of correct distribution of ODtrips (cpc = 0.87-0.94, KL Div = 0.06)\nsome prediction error persists, scaling inversely with OD pair size (wMAPE = 11-25%, SRMSE = 0.26-1.27)"
+  },
+  {
+    "objectID": "Thesis_Defense_28092026.html#two-perturbation-questions",
+    "href": "Thesis_Defense_28092026.html#two-perturbation-questions",
+    "title": "Maximum Entropy Estimation and Disease Propagation in the Worldwide Air Transportation Network",
+    "section": "Two perturbation questions",
+    "text": "Two perturbation questions\n\nGiven an outbreak at node A, how does a policymaker effectively prevent (infected) passengers from travelling to node B? \\(\\rightarrow\\) Which edges are most influential for a given OD pair?\nIf an edge in the transportation network is perturbed, which OD pairs are most affected?\n\nIdea: if the MaxEnt solution represents the best estimate of the OD matrix, then analyzing how the estimate shifts with passenger flow perturbations may provide the best clue for how the OD matrix shifts."
+  },
+  {
+    "objectID": "Thesis_Defense_28092026.html#linear-perturbation-analysis",
+    "href": "Thesis_Defense_28092026.html#linear-perturbation-analysis",
+    "title": "Maximum Entropy Estimation and Disease Propagation in the Worldwide Air Transportation Network",
+    "section": "Linear perturbation analysis",
+    "text": "Linear perturbation analysis\nGiven a perturbation \\(\\delta V_a\\) of the flow \\(V_a\\) on edge \\(a\\), it can be shown that\n\n\\[\n\\small\n\\boxed{\n\\delta \\ln T_{ij} = \\underbrace{\\delta \\ln \\tilde{T}^0_{ij}}_{\\scriptsize\\text{I. prior perturbation}} - \\underbrace{\\delta m_{ij}^T \\theta}_{\\scriptsize\\text{II. routing perturbation}} - \\underbrace{m_{ij}^T \\delta\\theta}_{\\scriptsize\\text{III. multiplier perturbation}}\n}\n\\]\n\nNote: reinterpreting \\(\\delta V_a = \\epsilon _a\\) as passenger flow measurement error (vector of errors \\(\\epsilon\\)), and \\(j_{i j} = \\nabla T_{i j}\\), this same approach gives the variance of the estimated OD matrix as \\(\\operatorname{Var}(T_{i j}) = j_{i j}^T \\operatorname{Cov}(\\epsilon)j_{i j}\\)."
+  },
+  {
+    "objectID": "Thesis_Defense_28092026.html#scenario-i-results",
+    "href": "Thesis_Defense_28092026.html#scenario-i-results",
+    "title": "Maximum Entropy Estimation and Disease Propagation in the Worldwide Air Transportation Network",
+    "section": "Scenario I Results",
+    "text": "Scenario I Results\nIf there is an outbreak in South Korea, which edges should decrease their flows to prevent passengers from travelling to Germany?\n\n\n\n\n\nDoes linear prediction agree with full re-inference for a large perturbation (50%)?"
+  },
+  {
+    "objectID": "Thesis_Defense_28092026.html#scenario-ii",
+    "href": "Thesis_Defense_28092026.html#scenario-ii",
+    "title": "Maximum Entropy Estimation and Disease Propagation in the Worldwide Air Transportation Network",
+    "section": "Scenario II",
+    "text": "Scenario II"
+  },
+  {
+    "objectID": "Thesis_Defense_28092026.html#scenario-ii-results",
+    "href": "Thesis_Defense_28092026.html#scenario-ii-results",
+    "title": "Maximum Entropy Estimation and Disease Propagation in the Worldwide Air Transportation Network",
+    "section": "Scenario II Results",
+    "text": "Scenario II Results\nIf the edge USA \\(\\rightarrow\\) Brazil is perturbed, which OD pairs are most affected?\n\n\n\n\n\nDoes linear prediction agree with full re-inference for a large perturbation (50%)?"
+  },
+  {
+    "objectID": "Thesis_Defense_28092026.html#gravity-model",
+    "href": "Thesis_Defense_28092026.html#gravity-model",
+    "title": "Maximum Entropy Estimation and Disease Propagation in the Worldwide Air Transportation Network",
+    "section": "Gravity Model",
+    "text": "Gravity Model\nThe number of trips from O to D is:\n\nproportional to the populations of O and D\npenalized by a deterrence function of distance\n\n\n\n\\[T^0_{O D} \\propto \\frac{N_O N_D}{f(d_{O D})}\\]\n\n[figures here]"
   }
 ]
